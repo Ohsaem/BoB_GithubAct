@@ -21,12 +21,9 @@ jobs:
           
       - name: Display Python version
         run: python -c "import sys; print(sys.version)" > output.txt
-        id: display-version
-        env:
-          PYTHON_VERSION: ${{ matrix.python-version }}
           
       - name: Save output as artifact
         uses: actions/upload-artifact@v2
         with:
-          name: python-version-${{ env.PYTHON_VERSION }}
-          path: ${{ github.workspace }}
+          name: python-version-${{ matrix.python-version }}
+          path: output.txt
